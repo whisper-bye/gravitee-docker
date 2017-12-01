@@ -38,38 +38,27 @@ services:
       file: common.yml
       service: gateway
     links:
-      - "local_mongodb:demo-mongodb"
-      - "local_elasticsearch:demo-elasticsearch"
+      - "local_mongodb:mongodb"
+      - "local_elasticsearch:elasticsearch"
     ports:
       - "8000:8082"
     volumes:
       - ./logs/gateway:/etc/gravitee.io/log
     environment:
-      - GRAVITEEIO_MONGODB_HOST=demo-mongodb
-      - GRAVITEEIO_ELASTIC_HOST=demo-elasticsearch
-
-  local_managementui:
-    extends:
-      file: common.yml
-      service: managementui
-    ports:
-      - "8002:80"
-    volumes:
-      - ./logs/management-ui:/var/log/httpd
-    environment:
-      - MGMT_API_URL=http:\/\/localhost:8005\/management\/
+      - GRAVITEEIO_MONGODB_HOST=mongodb
+      - GRAVITEEIO_ELASTIC_HOST=elasticsearch
 
   local_managementapi:
     extends:
       file: common.yml
       service: managementapi
     ports:
-      - "8005:8083"
+      - "8001:8083"
     volumes:
       - ./logs/management-api:/home/gravitee/logs
     links:
-      - "local_mongodb:demo-mongodb"
-      - "local_elasticsearch:demo-elasticsearch"
+      - "local_mongodb:mongodb"
+      - "local_elasticsearch:elasticsearch"
     environment:
-      - GRAVITEEIO_MONGODB_HOST=demo-mongodb
-      - GRAVITEEIO_ELASTIC_HOST=demo-elasticsearch
+      - GRAVITEEIO_MONGODB_HOST=mongodb
+      - GRAVITEEIO_ELASTIC_HOST=elasticsearch
