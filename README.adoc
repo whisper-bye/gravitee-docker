@@ -20,7 +20,7 @@ $ docker --version
 $ docker-compose --version
 ```
 
-Install via curl
 ```
-$ curl -L http://bit.ly/graviteeio-apim | bash
+$ docker-compose -f docker-compose-local.yml pull
+$ docker-compose -f docker-compose-local.yml up -d
 ```
