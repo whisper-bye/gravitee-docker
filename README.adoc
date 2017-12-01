@@ -24,3 +24,12 @@ $ docker-compose --version
 $ docker-compose -f docker-compose-local.yml pull
 $ docker-compose -f docker-compose-local.yml up -d
 ```
+
+```
+$ docker run \
+    --publish 8002:80 \
+    --env MGMT_API_URL=http://localhost:8001/management/ \
+    --name management-ui \
+    --restart always \
+    graviteeio/management-ui:latest
+```
