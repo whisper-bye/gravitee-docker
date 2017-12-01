@@ -31,5 +31,6 @@ $ docker run \
     --env MGMT_API_URL=http://localhost:8001/management/ \
     --name management-ui \
     --restart always \
+    --detach \
     graviteeio/management-ui:latest
 ```
